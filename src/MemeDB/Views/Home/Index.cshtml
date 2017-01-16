@@ -1,0 +1,16 @@
+﻿@model MemeDB.ViewModels.HomePageViewModel
+
+@{ 
+    ViewBag.Title = "Home";
+}
+
+<h1>Welcome!</h1>
+
+@foreach (var meme in Model.Memes)
+{
+    @Html.Partial("_Summary", meme)
+}
+
+<div>
+    <a class="btn btn-primary" asp-action="Create">Create</a>
+</div>

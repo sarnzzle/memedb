@@ -1,0 +1,19 @@
+﻿@model Meme
+
+@{ 
+    ViewBag.Title = Model.Name;
+}
+
+<h1>@Model.Name</h1>
+
+<div>Id: @Model.Id</div>
+
+<div><img src="@Model.Url"/></div>
+
+<div>
+    Genre: @Model.Genre
+</div>
+
+<div>
+    @Html.ActionLink("Home", nameof(HomeController.Index))
+</div>

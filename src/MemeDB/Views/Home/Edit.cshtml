@@ -1,0 +1,44 @@
+﻿@model Meme
+
+@{ 
+    ViewBag.Title = $"Edit {Model.Name}";
+}
+
+<div>
+
+    <h1>Editing: @Model.Name</h1>
+
+    <div>
+
+        
+        <form method="post" asp-antiforgery="true">
+            <div>
+                <img src="@Model.Url" />
+            </div>
+            <div>
+                <label asp-for="Name"></label>
+                <input asp-for="Name"/>
+                <span asp-validation-for="Name"/>
+            </div>
+            <div>
+                <label asp-for="Url"></label>
+                <input asp-for="Url"/>
+                <span asp-validation-for="Url"/>
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Genre)
+                <label asp-for="Genre"/>
+                <select asp-for="Genre" asp-items="@Html.GetEnumSelectList(typeof(Genre))">                    
+                </select>
+                <span asp-validation-for="Genre"/>
+            </div>
+            <div>
+                <input type="submit" value="Save!" />
+            </div>
+        </form>
+    </div>
+    <div>
+        <a asp-controller="Home" asp-action="Index">Home</a>
+    </div>
+
+</div>

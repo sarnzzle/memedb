@@ -1,0 +1,39 @@
+﻿@model Meme
+
+@{ 
+    ViewBag.Title = "Create";
+}
+
+<div>
+
+    <h1>Create</h1>
+
+    <div>
+
+        @Html.ValidationSummary()
+        @using (Html.BeginForm())
+        {
+            <div>
+                @Html.LabelFor(m => m.Name)
+                @Html.EditorFor(m => m.Name)
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Url)
+                @Html.EditorFor(m => m.Url)
+                @Html.ValidationMessageFor(m => m.Url)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Genre)
+                @Html.DropDownListFor(m => m.Genre, Html.GetEnumSelectList(typeof(Genre)))
+                @Html.ValidationMessageFor(m => m.Genre)
+            </div>
+            <div>
+                <input type="submit" value="Save!" />
+            </div>
+
+        }
+
+    </div>
+
+</div>
