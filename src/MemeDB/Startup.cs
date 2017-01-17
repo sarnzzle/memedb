@@ -34,7 +34,7 @@ namespace MemeDB
             services.AddSingleton<IGreeter, Greeter>();
             services.AddScoped<IMemeData, SqlMemeData>();
             services.AddDbContext<MemeDbContext>(options => 
-                    options.UseSqlServer(Configuration.GetConnectionString("MemeDB")));
+                    options.UseSqlServer(Configuration.GetConnectionString("MemeAzureDB")));
             services.AddIdentity<User, IdentityRole>()
                     .AddEntityFrameworkStores<MemeDbContext>();
         }
