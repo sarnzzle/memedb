@@ -9,6 +9,7 @@ using MemeDB.Services;
 using MemeDB.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System;
 
 namespace MemeDB
 {
@@ -18,7 +19,7 @@ namespace MemeDB
         {
             var builder = new ConfigurationBuilder()
                             .SetBasePath(env.ContentRootPath)
-                            .AddJsonFile("appsettings.json")
+                            .AddJsonFile("appsettings.Production.json")
                             .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
@@ -47,32 +48,45 @@ namespace MemeDB
             IGreeter greeter)
         {
             loggerFactory.AddConsole();
-
-            if (env.IsDevelopment())
+            try
             {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler(new ExceptionHandlerOptions
+                if (env.IsDevelopment())
                 {
-                    ExceptionHandler = context => context.Response.WriteAsync("Oops!")
+                    app.UseDeveloperExceptionPage();
+                }
+                else
+                {
+                    app.UseExceptionHandler(new ExceptionHandlerOptions
+                    {
+                        ExceptionHandler = context => context.Response.WriteAsync("Oops!")
+                    });
+                }
+
+                app.UseFileServer();
+                app.UseIdentity();
+
+            
+                app.UseMvc(ConfigureRoutes);
+            }
+
+            catch (Exception ex)
+            {
+                app.Run(async context =>
+                {
+                    context.Response.ContentType = "text/plain";
+                    await context.Response.WriteAsync(ex.Message);
                 });
             }
 
-            app.UseFileServer();
-            app.UseNodeModules(env.ContentRootPath);
-            app.UseIdentity();
-            app.UseMvc(ConfigureRoutes);
         }
 
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
         {
             // /Home/Index/
-
+            
             // Convention based routing
             routeBuilder.MapRoute("Default",
-                "{controller=Home}/{action=Index}/{id?}");
+                "{controller=Home}/{action=Index}/{id?}");            
         }
     }
 }
