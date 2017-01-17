@@ -10,5 +10,7 @@ namespace MemeDB.ViewModels
         public Genre Genre { get; set; }
         [Required, MaxLength(255)]
         public string Url { get; set; }
+        [Required, MaxLength(255)]
+        public string Description { get; set; }
     }
 }

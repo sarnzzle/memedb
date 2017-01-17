@@ -4,14 +4,18 @@
     ViewBag.Title = Model.Name;
 }
 
-<h1>@Model.Name</h1>
+<div class="panel panel-primary">
+    <div class="panel-heading">Title: @Model.Name</div>
 
-<div>Id: @Model.Id</div>
-
-<div><img src="@Model.Url"/></div>
-
-<div>
-    Genre: @Model.Genre
+    <div class="panel-body">
+        <img class="img-responsive" src="@Model.Url" /><br/>
+        Description: @Model.Description<br/>
+        Genre: @Model.Genre<br/>        
+    </div>    
+    <div class="panel-footer">
+        <a class="btn btn-default" href="@Model.Url" target="_blank">Link</a>
+        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    </div>
 </div>
 
 <div>

@@ -61,6 +61,7 @@ namespace MemeDB.Controllers
             {
                 meme.Genre = model.Genre;
                 meme.Name = model.Name;
+                meme.Description = model.Description;
                 meme.Url = model.Url;
                 _memeData.Commit();
 
@@ -87,6 +88,7 @@ namespace MemeDB.Controllers
                 var newMeme = new Meme();
                 newMeme.Genre = model.Genre;
                 newMeme.Name = model.Name;
+                newMeme.Description = model.Description;
                 newMeme.Url = model.Url;
 
                 newMeme = _memeData.Add(newMeme);
