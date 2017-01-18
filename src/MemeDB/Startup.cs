@@ -32,7 +32,6 @@ namespace MemeDB
         {
             services.AddMvc();
             services.AddSingleton(Configuration);
-            services.AddSingleton<IGreeter, Greeter>();
             services.AddScoped<IMemeData, SqlMemeData>();
             services.AddDbContext<MemeDbContext>(options => 
                     options.UseSqlServer(Configuration.GetConnectionString("MemeAzureDB")));
@@ -44,8 +43,7 @@ namespace MemeDB
         public void Configure(
             IApplicationBuilder app, 
             IHostingEnvironment env, 
-            ILoggerFactory loggerFactory,
-            IGreeter greeter)
+            ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole();
             try

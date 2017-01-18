@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using MemeDB.Entities;
 
@@ -9,6 +10,7 @@ namespace MemeDB.Services
         IEnumerable<Meme> GetAll();
         Meme Get(int id);
         Meme Add(Meme newMeme);
+        IEnumerable<Meme> GetByGenre(int id);
         void Commit();
     }
 
@@ -41,6 +43,11 @@ namespace MemeDB.Services
         public IEnumerable<Meme> GetAll()
         {
             return _context.Memes;
+        }
+
+        public IEnumerable<Meme> GetByGenre(int id)
+        {
+            return _context.Memes.Where(me => me.Genre == (Genre)id);
         }
     }    
 }

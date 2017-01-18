@@ -3,8 +3,9 @@ using System.Collections.Generic;
 
 namespace MemeDB.ViewModels
 {
-    public class HomePageViewModel
+    public class GenrePageViewModel
     {
+        public Genre Genre { get; set; }
         public IEnumerable<Meme> Memes { get; set; }
     }
 }

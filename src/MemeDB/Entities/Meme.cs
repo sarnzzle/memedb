@@ -4,11 +4,11 @@ namespace MemeDB.Entities
 {
     public enum Genre
     {
-        None,
+        Dogs,
         Cats,
-        Gif,
+        Gifs,
         Reactions,
-        RageComic
+        RageComics
     }
 
     public class Meme

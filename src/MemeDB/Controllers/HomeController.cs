@@ -9,13 +9,11 @@ namespace MemeDB.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        private IGreeter _greeter;
         private IMemeData _memeData;
 
-        public HomeController(IMemeData memeData, IGreeter greeter)
+        public HomeController(IMemeData memeData)
         {
             _memeData = memeData;
-            _greeter = greeter;
         }
 
         [AllowAnonymous]
@@ -23,7 +21,16 @@ namespace MemeDB.Controllers
         {
             var model = new HomePageViewModel();
             model.Memes = _memeData.GetAll();
-            model.CurrentMessage = _greeter.GetGreeting();
+
+            return View(model);
+        }
+
+        [AllowAnonymous]
+        public IActionResult Genre(int id)
+        {
+            var model = new GenrePageViewModel();
+            model.Memes = _memeData.GetByGenre(id);
+            model.Genre = (Genre)id;
 
             return View(model);
         }
