@@ -11,6 +11,7 @@ namespace MemeDB.Services
         Meme Get(int id);
         Meme Add(Meme newMeme);
         IEnumerable<Meme> GetByGenre(int id);
+        void Delete(Meme meme);
         void Commit();
     }
 
@@ -32,6 +33,12 @@ namespace MemeDB.Services
 
         public void Commit()
         {
+            _context.SaveChanges();
+        }
+
+        public void Delete(Meme meme)
+        {
+            _context.Remove(meme);
             _context.SaveChanges();
         }
 

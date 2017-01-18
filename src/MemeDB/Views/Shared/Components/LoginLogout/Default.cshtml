@@ -1,17 +1,11 @@
-﻿@if (User.Identity.IsAuthenticated)
-{
-    <li>
-        <form method="post" asp-controller="Account" asp-action="Logout" asp-antiforgery="true">
-            <input class="btn btn-default" type="submit" value="Log out" />
-        </form>
-    </li>
-}
-else
-{
-    <li>
-        <a class="btn btn-default" asp-controller="Account" asp-action="Register">Register</a>
-    </li>
-    <li>
-        <a class="btn btn-default" asp-controller="Account" asp-action="Login">Log in</a>
-    </li>
-}
+﻿<ul class="nav navbar-nav navbar-right">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <li><a asp-controller="Account" asp-action="Logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    }
+    else
+    {
+        <li><a asp-controller="Account" asp-action="Register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a asp-controller="Account" asp-action="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    }
+</ul>

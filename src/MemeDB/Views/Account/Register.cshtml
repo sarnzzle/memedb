@@ -24,11 +24,12 @@
         <span asp-validation-for="Password"></span>
     </div>
 
-    <div>
+    <div class="form-group">
         <label asp-for="ConfirmPassword"></label>
         <input class="form-control" asp-for="ConfirmPassword" />
         <span asp-validation-for="ConfirmPassword"></span>
     </div>
-    <br/>
-    <input class="btn btn-default" type="submit" value="Register" />    
+    <div class="input-group-btn">
+        <input class="btn btn-primary" type="submit" value="Register" />    
+    </div>
 </form>

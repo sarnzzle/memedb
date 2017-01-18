@@ -109,5 +109,22 @@ namespace MemeDB.Controllers
                 return View();
             }
         }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var meme = _memeData.Get(id);
+            if (ModelState.IsValid)
+            {
+                _memeData.Delete(meme);
+                _memeData.Commit();
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("Details", new { id = meme.Id });
+            }
+        }
     }
 }

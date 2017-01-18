@@ -1,12 +1,12 @@
 ﻿@model Meme
 
 @{ 
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Add a Meme";
 }
 
 <div>
 
-    <h1>Create</h1>
+    <h1>Add a Meme</h1>
 
     <div>
         <form method="post" asp-antiforgery="true">
@@ -31,7 +31,7 @@
                 <span asp-validation-for="Genre" />
             </div>
             <div>
-                <input class="btn btn-default" type="submit" value="Save!" />
+                <input class="btn btn-primary" type="submit" value="Save!" />
             </div>
         </form>
 

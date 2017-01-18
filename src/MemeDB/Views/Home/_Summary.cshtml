@@ -3,11 +3,10 @@
 <div class="panel panel-default">
     <div class="panel-heading">@Model.Name</div>
     <div class="panel-body">
-        <img class="img-responsive" src="@Model.Url" /><br/>
-        Genre: @Model.Genre
+        <p><img class="img-responsive" src="@Model.Url" /></p>
+        <p>Genre: @Model.Genre</p>
     </div>
     <div class="panel-footer">
-        <a class="btn btn-default" asp-action="Details" asp-route-id="@Model.Id">Detail</a>
-        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        <a class="btn btn-primary" asp-action="Details" asp-route-id="@Model.Id">Detail</a>
     </div>
 </div>

@@ -4,14 +4,13 @@
     ViewBag.Title = "Home";
 }
 
-<h1>Welcome!</h1>
-
-
+<div class="jumbotron">
+    <h1>Welcome to MemeDB!</h1>
+    <p>This is a database of all of the freshest memes on the internet. Feel free to look around or add your own favorites.</p>
+    <p><a class="btn btn-primary btn-lg" asp-action="Create" role="button">Add a Meme</a></p>
+</div>
 @foreach (var meme in Model.Memes)
 {
     @Html.Partial("_Summary", meme)
 }
 
-<div>
-    <a class="btn btn-primary" asp-action="Create">Create</a>
-</div>
