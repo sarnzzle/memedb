@@ -35,6 +35,7 @@ namespace MemeDB.Controllers
             return View(model);
         }
         
+        [AllowAnonymous]
         public IActionResult Details(int id)
         {
             var model = _memeData.Get(id);
